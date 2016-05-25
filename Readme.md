@@ -25,7 +25,7 @@ used Standard Peripherals Library V1.0.0 от STMicroelectronics
  
 - **USART_BSP.c** -  работа с COM портом. Выбор параметров USART в **USART_BSP.h**. Текущее: USART2, 115200, RxPin - PA3, TxPin - PA2
  
-- **main.c** - пример main-файла FreRTOS
+- **main.c** - пример main-файла FreeRTOS
 
 ------------------------------------
 ###Tool.exe 
