@@ -30,3 +30,7 @@ used Standard Peripherals Library V1.0.0 от STMicroelectronics
 ------------------------------------
 ###Tool.exe 
 - программа под Win для тестирования
+
+------------------------------------
+###FreeRTOS_IAR.rar
+- собранный проект IDE  - IAR (тестировалось на v7.10)
