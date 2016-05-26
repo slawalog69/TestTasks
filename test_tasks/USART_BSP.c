@@ -89,6 +89,8 @@ void vUSART2_ini()
 */
 void vUSART_CBackHndl()
 {
+  char tRec;
+
   // прерывание - transmit complete
   if (USART_GetITStatus(USARTx, USART_IT_TC) != RESET)
   {
@@ -112,7 +114,7 @@ void vUSART_CBackHndl()
     // Очищаем флаг прерывания 
     USART_ClearITPendingBit(USARTx, USART_IT_RXNE);
     //вычитываем
-    char tRec =USART_ReceiveData(USARTx);
+    tRec =USART_ReceiveData(USARTx);
     
     // если предыдущая команда не прочитана в основном цикле - пропадает следующая 
     if(ucGotMess) return;
@@ -141,15 +143,16 @@ void vUSART_CBackHndl()
 
 void vUSART2_send(void *Buff, int len)
 {
- 
+  char * tBuf;
+  char tSnd;
   ucTX_isBusy = 1;
   
   USART_ClearITPendingBit(USARTx, USART_IT_TC);
   
-  char * tBuf = (char*)Buff;
+  tBuf = (char*)Buff;
   chToSend =&tBuf[1];
   chEnd =  &tBuf[len];
-  char tSnd = *tBuf;
+  tSnd = *tBuf;
   USARTx->DR = tSnd ;
   
   USART_ITConfig(USARTx, USART_IT_TC, ENABLE);

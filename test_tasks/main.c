@@ -13,7 +13,7 @@ All rights reserved
 
 
 /* Hardware and starter kit includes. */
-#include "arm_comm.h"
+//#include "arm_comm.h"
 #include "stm32f4xx_conf.h"
 #include "stm32f4xx.h"
 #include <string.h>
@@ -79,3 +79,4 @@ void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
 }
 
 /*******************************************************************/
+

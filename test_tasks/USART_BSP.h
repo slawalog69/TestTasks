@@ -32,11 +32,11 @@
 #define RX_UART_PinSource                   GPIO_PinSource3  
 #define UART_AF_GPIO                  		GPIO_AF_USART2  
 
-extern void vUSART2_ini();
+extern void vUSART2_ini(void);
 extern void vUSART2_send(void *Buff, int len);
 extern u8 ucGotMess;
 extern char cTxBuff[200];
-extern void vUSART_CBackHndl();
+extern void vUSART_CBackHndl(void);
 #ifdef __cplusplus
 }
 #endif

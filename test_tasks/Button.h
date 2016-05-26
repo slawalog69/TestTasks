@@ -41,7 +41,7 @@ typedef enum
 
 extern void vBut_BlueButtIni(void);
 //extern void vBut_LEDOnOffTogl(char tClr, Led_Act En);
-extern void vBut_Discovery_LEDInit();
+extern void vBut_Discovery_LEDInit(void);
 //extern void vBut_ShowLeds(u16 DistSm  );
 #ifdef BUTTON_CHECK_ON_INTRRPT
 extern void vBut_IRQ_cBck(void);

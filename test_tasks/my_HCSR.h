@@ -24,7 +24,7 @@
 #define ECHO_GPIO_PORT                   GPIOB
 #define ECHO_GPIO_CLK                    RCC_AHB1Periph_GPIOB  
   
-extern void vHCSR_Ini(  );
+extern void vHCSR_Ini(void );
 //extern u16 usHCSR_Get_Distance(  );
 //extern u32 curUs;
 extern u16 usCurrentDistance;

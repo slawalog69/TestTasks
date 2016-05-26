@@ -35,9 +35,11 @@ double dCurrentTermo;
 void vAdc_Ini() 
 {
   ADC_InitTypeDef ADC_IniStruct;
+  ADC_CommonInitTypeDef ADC_Comon_Strct;
+
   ADC_StructInit(&ADC_IniStruct);
   
-  ADC_CommonInitTypeDef ADC_Comon_Strct;
+  
   ADC_CommonStructInit(&ADC_Comon_Strct);
   /* разрешаем тактирование A÷ѕ1 */
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
@@ -85,6 +87,8 @@ u16 usAdc_Temperature_read()
 
 double dAdc_CalculateThermo(u16 ADC_Val)
 {
+
+  double Temp_uC;
   Vsense = ADC_Val * STEP_ADC;   //Reading in mV
   /*
   Temperature (in ∞C) = {(VSENSE Ц V25) / Avg_Slope} + 25
@@ -98,7 +102,7 @@ double dAdc_CalculateThermo(u16 ADC_Val)
   */
   
   
-  double Temp_uC = ((Vsense- V25) / AVG_SLOPE)+25;
+  Temp_uC = ((Vsense- V25) / AVG_SLOPE)+25;
   
   Temp_uC = dAdc_AverageThermo(Temp_uC);
   
@@ -113,16 +117,19 @@ void vAdc_Clear_Arr()
 }
 
 double dAdc_AverageThermo(double dVal)
-{
+{ 
+  int i;
+  double Sum =0.0;
   *pd_TermArr = dVal;
+  
   pd_TermArr++;
   if(pd_TermArr > &dTermArr[8])
   {
      pd_TermArr = dTermArr;
      ucGotAverage =1; // набрали все восемь
   }
-  double Sum =0.0;
-  for(int i = 0; i < 8; i++)
+  
+  for(i = 0; i < 8; i++)
   {
     Sum += dTermArr[i]; 
   }
@@ -133,19 +140,20 @@ double dAdc_AverageThermo(double dVal)
 //                               vAdcTask()
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void  vAdcTask(void *pvParameters)
-{
+{ 
+  u16 ADC_Value;
   // счетчик 
   portTickType xLastWakeTime;
   const portTickType xFrequency = 125;
   // »нициализируем xLastWakeTime текущим временем
   xLastWakeTime = xTaskGetTickCount();
   
-  
   while(1)
 	 {
+
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 		//GPIOD->BSRRL = GPIO_Pin_3;
-	    u16 ADC_Value= usAdc_Temperature_read();
+	     ADC_Value= usAdc_Temperature_read();
         dCurrentTermo =dAdc_CalculateThermo(ADC_Value);
 	   // GPIOD->BSRRH = GPIO_Pin_3;
 	 }

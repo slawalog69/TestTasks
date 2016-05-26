@@ -17,7 +17,7 @@
  #include "stm32f4xx.h"
 extern u8 ucGotAverage;
 extern double dCurrentTermo; 	
-extern void vAdc_Ini() ;
+extern void vAdc_Ini(void) ;
 //extern u16 usAdc_Temperature_read();
 //extern double dAdc_CalculateThermo(u16 ADC_Val);
 

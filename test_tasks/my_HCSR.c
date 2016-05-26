@@ -69,6 +69,7 @@ void vHCSR_Set_Trigg(  )
 ///////////////////////////////////////////////////
 u16 usHCSR_Get_Distance(  )
 {
+  u16 Distance;
  // taskDISABLE_INTERRUPTS(); 
   vHCSR_Rst_Trigg();
   vHCSR_Delay(2);
@@ -99,7 +100,7 @@ u16 usHCSR_Get_Distance(  )
   
   curUs = TIM4->CNT; 
   /* Convert us to cm */
-  u16 Distance =  curUs /58;
+  Distance =  curUs /58;
   
   //ждем гарантированного времени между импульсами
   while((TIM4->SR & TIM_FLAG_CC2) == 0){};
@@ -113,6 +114,8 @@ u16 usHCSR_Get_Distance(  )
 
 void vHCSR_TIM_Config(void)
 {
+  RCC_ClocksTypeDef ClckStrct;
+  u32 PrescalerValue;
   /* TIM4 clock enable */
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
   /* Time base configuration */
@@ -121,11 +124,11 @@ void vHCSR_TIM_Config(void)
   TIM_TimeBaseInit(TIM4, &TIM_BaseStruct);
   
   
-  RCC_ClocksTypeDef ClckStrct;
+  
   RCC_GetClocksFreq(&ClckStrct);
   
   // Настройка на 1us
-  u32 PrescalerValue = (uint16_t) ((ClckStrct.PCLK1_Frequency * 2) / 1000000) - 1;
+  PrescalerValue = (uint16_t) ((ClckStrct.PCLK1_Frequency * 2) / 1000000) - 1;
   
   TIM_PrescalerConfig(TIM4, PrescalerValue, TIM_PSCReloadMode_Immediate);
 

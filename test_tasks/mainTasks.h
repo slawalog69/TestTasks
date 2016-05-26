@@ -16,7 +16,7 @@
 
 /* Exported functions ------------------------------------------------------- */
 extern void vMainTask (void *pvParameters);
-extern void vInitAll();
+extern void vInitAll(void);
 
 
 #endif /* __MAINtASKS_H */
