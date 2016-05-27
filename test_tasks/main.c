@@ -38,7 +38,7 @@ int main(void)
 #ifndef BUTTON_CHECK_ON_INTRRPT 
   xTaskCreate(vButtChckTask,(char*)"ButtChckTask", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
 #endif
-  xTaskCreate(vHCSR_Task,(char*)"HCSR_Task", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
+
   xTaskCreate(vShowLedsTask,(char*)"ShowLedsTask", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
   
   
