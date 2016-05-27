@@ -34,3 +34,10 @@ used Standard Peripherals Library V1.0.0 от STMicroelectronics
 ------------------------------------
 ###FreeRTOS_IAR.rar
 - собранный проект IDE  - IAR (тестировалось на v7.10)
+
+------------------------------------
+###RTOSDemo.hex
+- исполняемый Hex
+
+
+
