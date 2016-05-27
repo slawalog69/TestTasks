@@ -3,7 +3,7 @@
 * @file    mainTasks.c 
 * @author  Logunov Viacheslav
 * @date    
-* @brief  Инициализация и основная task 
+* @brief  Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї ГЁ Г®Г±Г­Г®ГўГ­Г Гї task 
 ******************************************************************************
 */
 /* Includes ------------------------------------------------------------------*/
@@ -34,13 +34,13 @@ void vInitAll()
   vBut_BlueButtIni();
   /* Ini Leds of STMF4Discovery */
   vBut_Discovery_LEDInit();
-  /* Ini датчик HCSR-04  */
+  /* Ini Г¤Г ГІГ·ГЁГЄ HCSR-04  */
   vHCSR_Ini();
   
 }
 
 /*******************************************************************/
-// вывод результатов в PC
+// ГўГ»ГўГ®Г¤ Г°ГҐГ§ГіГ«ГјГІГ ГІГ®Гў Гў PC
 void vMainTask (void *pvParameters)
 {
   static uint8_t CurrSecs =100;
@@ -48,7 +48,7 @@ void vMainTask (void *pvParameters)
   while (1)
   {
     t_Now = ulRTC_Bsp_GetNow();
-    if(CurrSecs != (uint8_t)t_Now)		//каждую секунду
+    if(CurrSecs != (uint8_t)t_Now)		//ГЄГ Г¦Г¤ГіГѕ Г±ГҐГЄГіГ­Г¤Гі
     {
       if((ucGotAverage ==1)&&(ucStartStop == 1))
       {
@@ -72,6 +72,7 @@ void vMainTask (void *pvParameters)
       CurrSecs = (uint8_t)t_Now; 
     }
   }
+  vTaskDelete(NULL);	
 }
 
 //----------END OF FILE---------------
