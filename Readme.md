@@ -34,6 +34,11 @@ used Standard Peripherals Library V1.0.0 от STMicroelectronics
 ------------------------------------
 ###FreeRTOS_IAR.rar
 - собранный проект IDE  - IAR (тестировалось на v7.10)
+<<<<<<< HEAD
+------------------------------------
+###FreeRTOS_KEIL.rar
+- собранный проект IDE  - KEIL (тестировалось на v4.74)
+=======
 
 ------------------------------------
 ###RTOSDemo.hex
@@ -41,3 +46,4 @@ used Standard Peripherals Library V1.0.0 от STMicroelectronics
 
 
 
+>>>>>>> b68b3e563f763ae0d4dd03a3ea676a6582538b22
